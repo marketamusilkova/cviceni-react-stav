@@ -1,5 +1,6 @@
-import './kasicka.css'
-import penizeUrl from './penize.svg'
+import { useState } from 'react';
+import './kasicka.css';
+import penizeUrl from './penize.svg';
 
 /*
 Zadání 1: Přichystej v komponentě `Kasicka` proměnnou pro počet uložených peněz s výchozí hodnotou
@@ -9,16 +10,30 @@ Zadání 3: Počet peněz vypiš.
 */
 
 const Kasicka = ({ pocatecniStav }) => {
+  const [ulozenePenize, setUlozenePenize] = useState(pocatecniStav);
   return (
     <div className="kasicka">
       <h3>
         <img src={penizeUrl} width={24} height={24} alt="" /> Peníze v kasičce:{' '}
-        0 Kč
+        {ulozenePenize} Kč
       </h3>
-      <button>přihodit pětikorunu</button> <button>vysypat</button>
+      <button
+        onClick={() => {
+          setUlozenePenize(ulozenePenize + 5);
+        }}
+      >
+        přihodit pětikorunu
+      </button>{' '}
+      <button
+        onClick={() => {
+          setUlozenePenize(0);
+        }}
+      >
+        vysypat
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export const ZaverecnyBonus2 = () => {
   return (
@@ -27,5 +42,5 @@ export const ZaverecnyBonus2 = () => {
         <Kasicka pocatecniStav={hodnota} key={i} />
       ))}
     </>
-  )
-}
+  );
+};

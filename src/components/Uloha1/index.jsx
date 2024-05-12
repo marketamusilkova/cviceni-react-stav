@@ -11,6 +11,13 @@ Zadání 2: Po kliku na tlačítko `vypnout` zhasněte.
 export const Uloha1 = () => {
   const [jeZapnuta, setJeZapnuta] = useState(false)
 
+  const zapni = () => {
+    setJeZapnuta(true)
+  }
+  const vypni = () => {
+    setJeZapnuta(false)
+  }
+
   return (
     <div className="zarovka">
       <img
@@ -21,10 +28,10 @@ export const Uloha1 = () => {
         className="zarovka__ikona"
       />
       <div className="zarovka__tlacitka">
-        <button className="zarovka__tlacitko" disabled={jeZapnuta}>
+        <button onClick={zapni} className="zarovka__tlacitko" disabled={jeZapnuta}>
           zapnout
         </button>
-        <button className="zarovka__tlacitko" disabled={!jeZapnuta}>
+        <button onClick={vypni} className="zarovka__tlacitko" disabled={!jeZapnuta}>
           vypnout
         </button>
       </div>
